@@ -4,7 +4,7 @@ export type IpsecResult = {
   success: boolean;
   data?: {
     /** 列表数据 */
-    list: Array<string>;
+    list: Array<SaInfo>;
   };
 };
 

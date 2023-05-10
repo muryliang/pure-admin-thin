@@ -1,13 +1,5 @@
 import { MockMethod } from "vite-plugin-mock";
 
-type SaInfo = {
-  /** ike 名字 */
-  ike: string;
-
-  /** children name */
-  children: Array<String>;
-};
-
 const saInfos: SaInfo[] = [
   {
     ike: "ike1",
@@ -75,12 +67,16 @@ export default [
         );
         if (child_found === -1) {
           saInfos[ike_found].children.push(body.child);
-        } // else re-assign child here
+        } else {
+          // nothing todo here
+        }
+      } else {
+        saInfos.push({
+          ike: body.ike,
+          children: [body.child]
+        });
       }
-      saInfos.push({
-        ike: body.ike,
-        children: [body.child]
-      });
+
       return {
         success: true
       };
