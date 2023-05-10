@@ -16,6 +16,15 @@ export default {
         title: "overview",
         showParent: true
       }
+    },
+    {
+      path: "/system/network",
+      name: "Network",
+      component: () => import("@/views/system/network.vue"),
+      meta: {
+        title: "network",
+        showParent: true
+      }
     }
   ]
 } as RouteConfigsTable;
