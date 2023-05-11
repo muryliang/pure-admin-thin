@@ -13,7 +13,7 @@ export default {
       name: "Authority",
       component: () => import("@/views/authority/index.vue"),
       meta: {
-        title: "overview",
+        title: "authority overview",
         showParent: true
       }
     }

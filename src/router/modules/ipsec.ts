@@ -13,7 +13,7 @@ export default {
       name: "IpsecOverview",
       component: () => import("@/views/ipsec/index.vue"),
       meta: {
-        title: "overview",
+        title: "ipsec overview",
         showParent: true
       }
     }

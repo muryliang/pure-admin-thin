@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
-import { addTunnels, delTunnels, getSas } from "@/api/ipsec";
+import {
+  addTunnels,
+  delTunnels,
+  getSas,
+  startTunnels,
+  stopTunnels
+} from "@/api/ipsec";
 
 const loading = ref(false);
 const salist = ref<SaInfo[]>([]);
@@ -29,8 +35,8 @@ const formInline = reactive({
 });
 
 const clearInput = () => {
-  formInline.ike = "";
-  formInline.child = "";
+  // formInline.ike = "";
+  // formInline.child = "";
 };
 
 const addSa = () => {
@@ -54,6 +60,26 @@ const delSa = () => {
   }
   clearInput();
 };
+
+const startTunnel = () => {
+  if (formInline.ike && formInline.child) {
+    startTunnels({
+      ike: formInline.ike,
+      child: formInline.child
+    });
+  }
+  clearInput();
+};
+
+const stopTunnel = () => {
+  if (formInline.ike && formInline.child) {
+    stopTunnels({
+      ike: formInline.ike,
+      child: formInline.child
+    });
+  }
+  clearInput();
+};
 </script>
 
 <template>
@@ -74,6 +100,12 @@ const delSa = () => {
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="getSa">Query</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="startTunnel">Start</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="stopTunnel">Stop</el-button>
       </el-form-item>
     </el-form>
 

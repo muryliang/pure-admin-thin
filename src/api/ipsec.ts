@@ -1,13 +1,5 @@
 import { http } from "@/utils/http";
 
-export type IpsecResult = {
-  success: boolean;
-  data?: {
-    /** 列表数据 */
-    list: Array<SaInfo>;
-  };
-};
-
 export const getSas = () => {
   return http.request<IpsecResult>("get", "/ipsec/listSas");
 };

@@ -111,9 +111,7 @@ export default [
     url: "/ipsec/startTunnels",
     method: "post",
     response: ({ body }) => {
-      body.list.forEach(tunnel =>
-        console.log(`${tunnel.ike}/${tunnel.child} started`)
-      );
+      console.log(`${body.ike}/${body.child} started`);
       return {
         success: true
       };
@@ -123,9 +121,7 @@ export default [
     url: "/ipsec/stopTunnels",
     method: "post",
     response: ({ body }) => {
-      body.list.forEach(tunnel =>
-        console.log(`${tunnel.ike}/${tunnel.child} stopped`)
-      );
+      console.log(`${body.ike}/${body.child} stopped`);
       return {
         success: true
       };
